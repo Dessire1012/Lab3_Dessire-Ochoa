@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Gimnasio {
     private String nombre;
     private String ciudad;
+    private Entrenador lider;
     private int victorias;
     private int derrotas;
     private int dinero;
@@ -15,12 +16,21 @@ public class Gimnasio {
     public Gimnasio() {
     }
 
-    public Gimnasio(String nombre, String ciudad, int victorias, int derrotas, int dinero) {
+    public Gimnasio(String nombre, String ciudad, Entrenador lider, int victorias, int derrotas, int dinero) {
         this.nombre = nombre;
         this.ciudad = ciudad;
+        this.lider = lider;
         this.victorias = victorias;
         this.derrotas = derrotas;
         this.dinero = dinero;
+    }
+
+    public Entrenador getLider() {
+        return lider;
+    }
+
+    public void setLider(Entrenador lider) {
+        this.lider = lider;
     }
 
     public String getNombre() {
@@ -60,7 +70,9 @@ public class Gimnasio {
     }
 
     public void setDinero(int dinero) {
-        this.dinero = dinero;
+        if(dinero % 10000 == 0){
+            this.dinero = dinero;
+        }
     }
     
     public ArrayList<Entrenador> getListaEntrenadores() {
@@ -68,7 +80,7 @@ public class Gimnasio {
     }
 
     public void setListaEntrenadores(ArrayList<Entrenador> listaEntrenadores) {
-        if(listaEntrenadores.size() < 6){
+        if(listaEntrenadores.size() <= 7){
             this.listaEntrenadores = listaEntrenadores;
         }  
     }
