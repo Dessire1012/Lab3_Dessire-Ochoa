@@ -22,6 +22,10 @@ public class Coordinador extends Entrenador{
     public void setPokemones(ArrayList<Pokemon> pokemones) {
         this.pokemones = pokemones;
     }
+    
+    public void addPokemon (Pokemon poke){
+        pokemones.add(poke);
+    }
 
     @Override
     public String toString() {
