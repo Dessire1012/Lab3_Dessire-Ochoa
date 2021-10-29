@@ -5,23 +5,23 @@ import java.util.ArrayList;
 
 
 public class Novato extends Entrenador{
-    private ArrayList <Pokemon> pokeDescubiertos = new ArrayList();
+    private int PokeDescubiertos;
     private Pokemon pokemon1 = new Pokemon();
 
     public Novato() {
-        super();
     }
 
-    public Novato(String nombre, int edad, char sexo) {
+    public Novato(int PokeDescubiertos, String nombre, int edad, char sexo) {
         super(nombre, edad, sexo);
+        this.PokeDescubiertos = PokeDescubiertos;
     }
 
-    public ArrayList<Pokemon> getPokeDescubiertos() {
-        return pokeDescubiertos;
+    public int getPokeDescubiertos() {
+        return PokeDescubiertos;
     }
 
-    public void setPokeDescubiertos(ArrayList<Pokemon> pokeDescubiertos) {
-        this.pokeDescubiertos = pokeDescubiertos;
+    public void setPokeDescubiertos(int PokeDescubiertos) {
+        this.PokeDescubiertos = PokeDescubiertos;
     }
 
     public Pokemon getPokemon1() {
@@ -34,10 +34,10 @@ public class Novato extends Entrenador{
 
     @Override
     public String toString() {
-        return "Novato{" + "pokeDescubiertos=" + pokeDescubiertos + ", pokemon1=" + pokemon1 + '}';
+        return "Novato{" + "PokeDescubiertos=" + PokeDescubiertos + ", pokemon1=" + pokemon1 + '}';
     }
-    
-    
+
+  
   
     
 }

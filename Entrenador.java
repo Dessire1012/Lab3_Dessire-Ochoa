@@ -38,7 +38,10 @@ public class Entrenador {
     }
 
     public void setSexo(char sexo) {
-        this.sexo = sexo;
+        if (sexo == 'f' || sexo == 'F' || sexo == 'm' || sexo == 'M'){
+            this.sexo = sexo;
+        }
+        
     }
 
     @Override
