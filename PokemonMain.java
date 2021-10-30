@@ -28,7 +28,7 @@ public class PokemonMain {
         ArrayList<Entrenador> listEntrenadores = new ArrayList();
         ArrayList<Pokemon> pokemones = new ArrayList();
 
-        while (opcion != 10) {
+        while (opcion != 11) {
             opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese que opcion quiere realizar: \n"
                     + "1. Crear gimnasio\n"
                     + "2. Eliminar gimnasio\n"
@@ -52,7 +52,8 @@ public class PokemonMain {
                     edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del Entrenador: "));
                     sexo = JOptionPane.showInputDialog("Ingrese el sexo del Entrenadore (f/m): ").charAt(0);
 
-                    listEntrenadores.add(lider = new Entrenador(nombreE, edad, sexo));
+                    lider = new Entrenador(nombreE, edad, sexo);
+                    listEntrenadores.add(lider);
                     gyms.add(new Gimnasio(nombre, ciudad, lider, victorias, derrotas, dinero));
 
                     break;
@@ -91,7 +92,7 @@ public class PokemonMain {
 
                     posicion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la posicion del gimnasio: "));
 
-                    for (int i = 0; i <= 6; i++) {
+                    for (int i = 0; i <= 5; i++) {
                         opcion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese que tipo de Entrenador es: \n"
                                 + "1. Novato\n"
                                 + "2. Maestro\n"
@@ -99,7 +100,7 @@ public class PokemonMain {
                                 + "4. Legendario\n"));
 
                         if (opcion == 1) {
-                            pokesDescu = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del Entrenador " + (i + 1) + " : "));
+                            pokesDescu = Integer.parseInt(JOptionPane.showInputDialog("Ingrese los pokemos descubiertos del Entrenador " + (i + 1) + " : "));
                             nombreE = JOptionPane.showInputDialog("Ingrese el nombre del Entrenador " + (i + 1) + " :");
                             edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del Entrenador " + (i + 1) + " : "));
                             sexo = JOptionPane.showInputDialog("Ingrese el sexo del Entrenador (f/m): ").charAt(0);
@@ -137,18 +138,19 @@ public class PokemonMain {
                         }
 
                     }
-                    listEntrenadores.add(gyms.get(posicion).getLider());
+                    
                     gyms.get(posicion).setListaEntrenadores(listEntrenadores);
-
-                    for (int i = 0; i <= listEntrenadores.size(); i++) {
-                        listEntrenadores.remove(i);
-                    }
 
                     break;
                 case 6:
+                    String e = "";
                     posicion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la poscion del gimnasio :"));
-
-                    JOptionPane.showMessageDialog(null, gyms.get(posicion).getListaEntrenadores());
+ 
+                    for (int i = 0; i < gyms.get(posicion).getListaEntrenadores().size(); i++) {
+                         e += i + "- " + gyms.get(posicion).getListaEntrenadores().get(i) + "\n";
+                    }
+                    
+                    JOptionPane.showMessageDialog(null, e);
 
                     break;
                 case 7:
@@ -207,25 +209,25 @@ public class PokemonMain {
                             + "4. Legendario\n"));
 
                     if (opcion2 == 1) {
-                        ((Novato) gyms.get(opcion).getListaEntrenadores().get(posicion2)).setPokemon1(pokemones.get(posicion));
+                        ((Novato)gyms.get(opcion).getListaEntrenadores().get(posicion2)).setPokemon1(pokemones.get(posicion));
                         pokemones.remove(posicion);
                     }
 
                     if (opcion2 == 2) {
-                        ((Maestro) gyms.get(opcion).getListaEntrenadores().get(posicion2)).setPokemon1(pokemones.get(posicion));
+                        ((Maestro)gyms.get(opcion).getListaEntrenadores().get(posicion2)).setPokemon1(pokemones.get(posicion));
                         pokemones.remove(posicion);
 
                     }
 
                     if (opcion2 == 3) {
                         
-                        ((Coordinador) gyms.get(opcion).getListaEntrenadores().get(posicion2)).addPokemon(pokemones.get(posicion));
+                        ((Coordinador)gyms.get(opcion).getListaEntrenadores().get(posicion2)).addPokemon(pokemones.get(posicion));
                         pokemones.remove(posicion);
 
                     }
 
                     if (opcion2 == 4) {
-                        ((Legendario) gyms.get(opcion).getListaEntrenadores().get(posicion2)).setPokemonLeg((PokeLegendario)pokemones.get(posicion));
+                        ((Legendario)gyms.get(opcion).getListaEntrenadores().get(posicion2)).setPokemonLeg((PokeLegendario)pokemones.get(posicion));
                         pokemones.remove(posicion);
                     }
 
